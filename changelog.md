@@ -9,5 +9,9 @@ Version History
 (10/14/2018) 0.7: Program accepts sentences and punctuation.
 (10/15/2018) 0.71: Added comments, code cleanup, UI tweak.
 Known bugs:
--Will translate contractions, but gets confused about formatting, breaking sentences, and not returning correct case.
--Code cleanup
+-Will translate contractions incorrectly due to punctuation formatting. gets confused about formatting, breaking sentences, and not returning correct case.
+(10/15/2018) 1.0: Finally checked prompt and realized was missing loop function. Comments. formatting bug fix.
+Known issues:
+-Still can't handle contractions properly.
+-Doesn't recognize numbers, special characters (e.g. email addresses. 
+-Variable names have been jumbled, effecting readability.
