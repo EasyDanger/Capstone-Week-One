@@ -5,10 +5,13 @@ import java.util.Scanner;
 public class CapStoneWeekOne {
 	
 	//Dealing with multiple methods, it's safest to declare most of these variables here.
+	static String origWORD;
 	static String origWord;
-	static String passWord;
+	static String[] passWORDArr;
+	static String[] passWordArr;
 	static String transWordUnForm;
 	static String transWordForm;
+	static int j;
 	static int i;
 	static Scanner read = new Scanner(System.in);
 	public static void main(String[] args) {
@@ -16,26 +19,38 @@ public class CapStoneWeekOne {
 		System.out.println("Hi, kids. We're going to translate your text into Pig Latin! (Enter to continue) \n");
 		read.nextLine();
 		System.out.println("Just enter a word, a phrase, hell, even a sentence, and we'll get that translated for you right in a jiffy! (Enter)\n");
-		origWord = read.next();
+		origWORD = read.nextLine();
 //		for (i = 0; origWord.equals("\n"); i++) {
 //			System.out.println("Try again.");
 //			origWord = read.nextLine();
 //		}
-		passWord = (origWord.toLowerCase());
-		pigLatTrans(passWord);
-		cases(origWord);
+//		if (origWORD.charAt(origWORD.length()) == '.' ) {
+			
+	//	}
 		
-		System.out.println(transWordForm);
-	}
-	private static String pigLatTrans(String passWord) {		
-		if ((passWord.charAt(0) == 'a') || (passWord.charAt(0) == 'e') || (passWord.charAt(0) == 'i') || (passWord.charAt(0) == 'o') || (passWord.charAt(0) == 'u')) {
-			transWordUnForm = passWord + "way";
+		origWord = (origWORD.toLowerCase());
+		passWORDArr = origWORD.split("\\s+");
+		passWordArr = origWord.split("\\s+");
+//		System.out.println(origWord);
+//		System.out.println(passWordArr);
+		for (j = 0; j <= passWordArr.length -1; j++) {
+			pigLatTrans(passWordArr[j]);
+		
+		
+//		pigLatTrans(passWordArr);
+		cases(passWORDArr[j]);
+		
+		System.out.print(transWordForm + " ");
+		}}
+	private static String pigLatTrans(String passWordArr) {		
+		if ((passWordArr.charAt(0) == 'a') || (passWordArr.charAt(0) == 'e') || (passWordArr.charAt(0) == 'i') || (passWordArr.charAt(0) == 'o') || (passWordArr.charAt(0) == 'u')) {
+			transWordUnForm = passWordArr + "way";
 		}
 		else {
-			for (i = 1; ((passWord.charAt(i) != 'a') && (passWord.charAt(i) != 'e') && (passWord.charAt(i) != 'i') && (passWord.charAt(i) != 'o') && (passWord.charAt(i) != 'u') && (passWord.charAt(i) != 'y')); i++) {
+			for (i = 1; ((passWordArr.charAt(i) != 'a') && (passWordArr.charAt(i) != 'e') && (passWordArr.charAt(i) != 'i') && (passWordArr.charAt(i) != 'o') && (passWordArr.charAt(i) != 'u') && (passWordArr.charAt(i) != 'y')) && i < passWordArr.length(); i++) {
 			}
-			String pushaT = passWord.substring(0, i);
-			String noMalice = passWord.substring(i);
+			String pushaT = passWordArr.substring(0, i);
+			String noMalice = passWordArr.substring(i);
 			transWordUnForm = noMalice + pushaT + "ay";
 		}
 		return transWordUnForm;
@@ -50,7 +65,7 @@ public class CapStoneWeekOne {
 				if (howMany == origWord.length()) {
 			transWordForm = transWordUnForm.toUpperCase();						
 				} else {
-					noTricks(passWord);
+					noTricks(passWordArr[j]);
 				}
 		}
 		else if (Character.isLowerCase(origWord.charAt(0))) {
@@ -61,7 +76,7 @@ public class CapStoneWeekOne {
 				if (howMany == origWord.length()) {
 			transWordForm = transWordUnForm.toLowerCase();						
 				} else {
-					noTricks(passWord);
+					noTricks(passWordArr[j]);
 				}
 		}
 		else if ((Character.isUpperCase(origWord.charAt(0))) && (Character.isLowerCase(origWord.charAt(1)))) {
@@ -81,7 +96,7 @@ public class CapStoneWeekOne {
 		return transWordForm;		
 	}
 	private static void noTricks(String transWordUnForm) {
-		System.out.println("\n\nYou gave me strangely formatted test in there. So, you're getting getting it back in in lowercase. Hope you're happy. (Enter)\n\n");
+		System.out.println("\n\nYou gave me strangely formatted text in there. So, you're getting getting it back in in lowercase. Hope you're happy. (Enter)\n\n");
 		read.nextLine();
 		transWordForm = transWordUnForm;
 		
