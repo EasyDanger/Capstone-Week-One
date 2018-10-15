@@ -5,3 +5,9 @@ Version History
 
 (10/12/2018) 0.1: Basic logic written. Translates single words into Pig Latin.
 (10/14/2018) 0.2: Logic now accounts for differences between cases. Accepts input in UPPERCASE, Lowercase, and Initial Caps.
+(10/14/2018) 0.5: Program now accepts sentences, but can't yet accept punctuation. 
+(10/14/2018) 0.7: Program accepts sentences and punctuation.
+Known bugs:
+-Will translate contractions, but gets confused about formatting, breaking sentences, and not returning correct case.
+-Interface not complete.
+-Code cleanup and formatting.

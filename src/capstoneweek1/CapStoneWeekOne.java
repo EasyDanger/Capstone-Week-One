@@ -1,6 +1,8 @@
 package capstoneweek1;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CapStoneWeekOne {
 	
@@ -13,6 +15,7 @@ public class CapStoneWeekOne {
 	static String transWordForm;
 	static int j;
 	static int i;
+	static char punc;
 	static Scanner read = new Scanner(System.in);
 	public static void main(String[] args) {
 
@@ -40,9 +43,18 @@ public class CapStoneWeekOne {
 //		pigLatTrans(passWordArr);
 		cases(passWORDArr[j]);
 		
-		System.out.print(transWordForm + " ");
+		System.out.print(transWordForm + punc + " ");
 		}}
-	private static String pigLatTrans(String passWordArr) {		
+	private static String pigLatTrans(String passWordArr) {	
+		
+        Pattern pat = Pattern.compile("\\p{Punct}");
+        Matcher m = pat.matcher(passWordArr);
+		if (m.find()) {
+			punc = passWordArr.charAt(passWordArr.length()-1);
+			passWordArr = passWordArr.substring(0,passWordArr.length()-1); 
+		}else {
+			punc = 0;
+		}
 		if ((passWordArr.charAt(0) == 'a') || (passWordArr.charAt(0) == 'e') || (passWordArr.charAt(0) == 'i') || (passWordArr.charAt(0) == 'o') || (passWordArr.charAt(0) == 'u')) {
 			transWordUnForm = passWordArr + "way";
 		}
@@ -57,6 +69,13 @@ public class CapStoneWeekOne {
 	}
 	private static String cases(String origWord) {
 		int howMany = 0;
+		
+        Pattern pat = Pattern.compile("\\p{Punct}");
+        Matcher m = pat.matcher(origWord);
+		if (m.find()) {
+			punc = origWord.charAt(origWord.length()-1);
+			origWord = origWord.substring(0,origWord.length()-1); 
+		}
 		if ((Character.isUpperCase(origWord.charAt(0))) && (Character.isUpperCase(origWord.charAt(1)))) {
 			for (i = 0; i <= origWord.length()-1; i++) {
 				if (Character.isUpperCase(origWord.charAt(i))) {
